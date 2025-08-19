@@ -1,1 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
 @import 'tailwindcss';
+
+body {
+    background: rgb(100, 0, 123);
+    background: radial-gradient(
+        circle,
+        rgba(100, 0, 123, 1) 0%,
+        rgba(62, 20, 86, 1) 100%
+    );
+    overflow: hidden;
+}
+
+button {
+    @apply text-white py-2.5 px-7.5 text-base bg-transparent rounded-[50px] border border-white mt-10 mx-auto cursor-pointer opacity-70;
+}
+
+@utility container {
+    margin-inline: auto;
+    padding-inline: 1rem;
+}
+
+@theme {
+    --font-quicksand: 'Quicksand', sans-serif;
+}
