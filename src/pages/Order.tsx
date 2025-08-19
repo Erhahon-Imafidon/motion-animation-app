@@ -7,9 +7,11 @@ type OrderProps = {
 
 const Order = ({ pizza }: OrderProps) => {
     return (
-        <div className="container order">
+        <div className="text-center max-w-200 order">
             <h2>Thank you for your order :)</h2>
-            <p>You ordered a {pizza.base} pizza with:</p>
+            <p className="my-5 mx-auto">
+                You ordered a {pizza.base} pizza with:
+            </p>
             {pizza.toppings.map((topping) => (
                 <div key={topping}>{topping}</div>
             ))}
