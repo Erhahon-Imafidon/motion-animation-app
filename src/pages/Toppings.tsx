@@ -1,5 +1,4 @@
-// src/pages/Toppings.tsx
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 type Pizza = {
     base: string;

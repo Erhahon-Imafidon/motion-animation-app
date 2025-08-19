@@ -1,6 +1,6 @@
 const Header = () => {
     return (
-        <header>
+        <header className="flex items-center text-white p-10 ">
             <div className="logo">
                 <svg
                     className="pizza-svg"
