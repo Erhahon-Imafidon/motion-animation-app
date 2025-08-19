@@ -6,15 +6,20 @@ import Toppings from './pages/Toppings.tsx';
 import Layout from './components/Layout.tsx';
 import Order from './pages/Order.tsx';
 
-const App = () => {
-    const [pizza, setPizza] = useState({ base: '', toppings: [] });
+type Pizza = {
+    base: string;
+    toppings: string[];
+};
 
-    const addBase = (base) => {
+const App = () => {
+    const [pizza, setPizza] = useState<Pizza>({ base: '', toppings: [] });
+
+    const addBase = (base: string) => {
         setPizza({ ...pizza, base });
     };
 
-    const addTopping = (topping) => {
-        let newToppings;
+    const addTopping = (topping: string) => {
+        let newToppings: string[];
         if (!pizza.toppings.includes(topping)) {
             newToppings = [...pizza.toppings, topping];
         } else {
