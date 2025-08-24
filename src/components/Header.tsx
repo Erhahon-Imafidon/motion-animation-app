@@ -1,3 +1,5 @@
+import { motion } from 'motion/react';
+
 const Header = () => {
     return (
         <header className="flex items-center text-white p-10 ">
@@ -28,9 +30,13 @@ const Header = () => {
                     />
                 </svg>
             </div>
-            <div className=" mt-5 text-[1em] w-full">
+            <motion.div
+                initial={{ y: -250 }}
+                animate={{ y: -10 }}
+                className=" mt-5 text-[1em] w-full"
+            >
                 <h1 className="border-b border-white/20 pb-2.5">Pizza Joint</h1>
-            </div>
+            </motion.div>
         </header>
     );
 };
