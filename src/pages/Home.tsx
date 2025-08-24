@@ -4,7 +4,8 @@ import { motion } from 'motion/react';
 const Home = () => {
     return (
         <motion.div
-            animate={{}}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             className="home max-w-200 mt-25 mb-10 mx-auto text-center"
         >
             <h2 className="mb-7.5 text-[2em]">Welcome to Pizza Joint</h2>
