@@ -1,15 +1,32 @@
 import { Link } from 'react-router';
+import { motion } from 'motion/react';
 
 const Home = () => {
     return (
-        <div className="home max-w-200 mt-25 mb-10 mx-auto text-center">
-            <h2 className="text-[2em] mb-7.5">Welcome to Pizza Joint</h2>
+        <motion.div
+            animate={{ rotateZ: 180, opacity: 0.5 }}
+            className="home max-w-200 mt-25 mb-10 mx-auto text-center"
+        >
+            <motion.h2
+                animate={{
+                    fontSize: '50px',
+                    color: '#ff2994',
+                    x: 100,
+                    y: -100,
+                }}
+                className="mb-7.5 text-[2em]"
+            >
+                Welcome to Pizza Joint
+            </motion.h2>
             <Link to="/base">
-                <button className="!py-4 !text-[1.6em] !border-3 my-7.5 mx-5">
+                <motion.button
+                    animate={{ scale: 1.5 }}
+                    className="!py-4 !text-[1.6em] !border-3 my-7.5 mx-5"
+                >
                     Create Your Pizza
-                </button>
+                </motion.button>
             </Link>
-        </div>
+        </motion.div>
     );
 };
 
