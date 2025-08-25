@@ -1,6 +1,6 @@
 import { Link } from 'react-router';
 import { useState, useEffect } from 'react';
-import { motion } from 'motion/react';
+import { motion, Variants } from 'motion/react';
 
 type Pizza = {
     base: string;
@@ -39,7 +39,7 @@ const Toppings: React.FC<ToppingsProps> = ({ addTopping, pizza }) => {
         addTopping(topping);
     };
 
-    const containerVariants = {
+    const containerVariants: Variants = {
         hidden: {
             x: '100vw',
             opacity: 0,
@@ -48,14 +48,6 @@ const Toppings: React.FC<ToppingsProps> = ({ addTopping, pizza }) => {
             x: 0,
             opacity: 1,
             transition: { type: 'spring', delay: 0.5 },
-        },
-    };
-
-    const nextVariants = {
-        hidden: { x: '-100vw' },
-        visible: {
-            x: 0,
-            transition: { type: 'spring', stiffness: 120 },
         },
     };
 

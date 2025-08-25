@@ -1,6 +1,6 @@
 import { Link } from 'react-router';
 import { useState } from 'react';
-import { motion } from 'motion/react';
+import { motion, Variants } from 'motion/react';
 
 interface IBaseProps {
     addBase: (base: string) => void;
@@ -18,7 +18,7 @@ const Base = ({ addBase, pizza }: IBaseProps) => {
         addBase(base);
     };
 
-    const containerVariants = {
+    const containerVariants: Variants = {
         hidden: {
             x: '100vw',
             opacity: 0,
@@ -27,6 +27,14 @@ const Base = ({ addBase, pizza }: IBaseProps) => {
             x: 0,
             opacity: 1,
             transition: { type: 'spring', delay: 0.5 },
+        },
+    };
+
+    const nextVariants: Variants = {
+        hidden: { x: '-100vw' },
+        visible: {
+            x: 0,
+            transition: { type: 'spring', stiffness: 120 },
         },
     };
 
