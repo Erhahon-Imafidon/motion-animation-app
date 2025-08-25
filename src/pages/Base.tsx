@@ -30,6 +30,14 @@ const Base = ({ addBase, pizza }: IBaseProps) => {
         },
     };
 
+    const nextVariants = {
+        hidden: { x: '-100vw' },
+        visible: {
+            x: 0,
+            transition: { type: 'spring', stiffness: 120 },
+        },
+    };
+
     return (
         <motion.div
             variants={containerVariants}
@@ -69,12 +77,7 @@ const Base = ({ addBase, pizza }: IBaseProps) => {
             </ul>
 
             {pizza.base && (
-                <motion.div
-                    initial={{ x: '-100vw' }}
-                    animate={{ x: 0 }}
-                    transition={{ type: 'spring', stiffness: 120 }}
-                    className="next"
-                >
+                <motion.div variants={nextVariants} className="next">
                     <Link to="/toppings">
                         <motion.button
                             whileHover={{
