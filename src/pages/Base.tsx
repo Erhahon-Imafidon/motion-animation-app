@@ -30,14 +30,6 @@ const Base = ({ addBase, pizza }: IBaseProps) => {
         },
     };
 
-    const nextVariants = {
-        hidden: { x: '-100vw' },
-        visible: {
-            x: 0,
-            transition: { type: 'spring', stiffness: 120 },
-        },
-    };
-
     return (
         <motion.div
             variants={containerVariants}

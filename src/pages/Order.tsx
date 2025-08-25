@@ -1,3 +1,5 @@
+import { motion } from 'motion/react';
+
 type OrderProps = {
     pizza: {
         base: string;
@@ -5,9 +7,26 @@ type OrderProps = {
     };
 };
 
+const containerVariants = {
+    hidden: {
+        x: '100vw',
+        opacity: 0,
+    },
+    visible: {
+        x: 0,
+        opacity: 1,
+        transition: { type: 'spring', delay: 0.5 },
+    },
+};
+
 const Order = ({ pizza }: OrderProps) => {
     return (
-        <div className="text-center max-w-200 mx-auto">
+        <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="text-center max-w-200 mx-auto"
+        >
             <h2>Thank you for your order :)</h2>
             <p className="my-5 mx-auto">
                 You ordered a {pizza.base} pizza with:
@@ -15,7 +34,7 @@ const Order = ({ pizza }: OrderProps) => {
             {pizza.toppings.map((topping) => (
                 <div key={topping}>{topping}</div>
             ))}
-        </div>
+        </motion.div>
     );
 };
 
