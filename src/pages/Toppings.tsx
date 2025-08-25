@@ -1,6 +1,6 @@
 import { Link } from 'react-router';
 import { useState, useEffect } from 'react';
-import { motion } from 'motion/react';
+import { motion, Variants } from 'motion/react';
 
 type Pizza = {
     base: string;
@@ -39,8 +39,25 @@ const Toppings: React.FC<ToppingsProps> = ({ addTopping, pizza }) => {
         addTopping(topping);
     };
 
+    const containerVariants: Variants = {
+        hidden: {
+            x: '100vw',
+            opacity: 0,
+        },
+        visible: {
+            x: 0,
+            opacity: 1,
+            transition: { type: 'spring', delay: 0.5 },
+        },
+    };
+
     return (
-        <div className="toppings max-w-75 mt-25 mb-10 mx-auto">
+        <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="toppings max-w-75 mt-25 mb-10 mx-auto"
+        >
             <h3 className="pb-2.5 mb-2.5 border-b border-white/20">
                 Step 2: Choose Toppings
             </h3>
@@ -84,7 +101,7 @@ const Toppings: React.FC<ToppingsProps> = ({ addTopping, pizza }) => {
                     Order
                 </motion.button>
             </Link>
-        </div>
+        </motion.div>
     );
 };
 

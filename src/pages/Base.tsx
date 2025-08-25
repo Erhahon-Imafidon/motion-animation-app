@@ -1,6 +1,6 @@
 import { Link } from 'react-router';
 import { useState } from 'react';
-import { motion } from 'motion/react';
+import { motion, Variants } from 'motion/react';
 
 interface IBaseProps {
     addBase: (base: string) => void;
@@ -18,11 +18,31 @@ const Base = ({ addBase, pizza }: IBaseProps) => {
         addBase(base);
     };
 
+    const containerVariants: Variants = {
+        hidden: {
+            x: '100vw',
+            opacity: 0,
+        },
+        visible: {
+            x: 0,
+            opacity: 1,
+            transition: { type: 'spring', delay: 0.5 },
+        },
+    };
+
+    const nextVariants: Variants = {
+        hidden: { x: '-100vw' },
+        visible: {
+            x: 0,
+            transition: { type: 'spring', stiffness: 120 },
+        },
+    };
+
     return (
         <motion.div
-            initial={{ x: '100vw' }}
-            animate={{ x: 0 }}
-            transition={{ type: 'spring', stiffness: 100, delay: 0.5 }}
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
             className="base max-w-75 mt-25 mb-10 mx-auto"
         >
             <h3 className="pb-2.5 mb-2.5 border-b border-white/20">
@@ -38,7 +58,6 @@ const Base = ({ addBase, pizza }: IBaseProps) => {
                                 color: '#f8e112',
                                 originX: 0,
                             }}
-                            transition={{ type: 'spring', stiffness: 300 }}
                             className="p-2.5 cursor-pointer"
                             key={base}
                             onClick={() => handleActive(base)}
@@ -58,12 +77,7 @@ const Base = ({ addBase, pizza }: IBaseProps) => {
             </ul>
 
             {pizza.base && (
-                <motion.div
-                    initial={{ x: '-100vw' }}
-                    animate={{ x: 0 }}
-                    transition={{ type: 'spring', stiffness: 120 }}
-                    className="next"
-                >
+                <motion.div variants={nextVariants} className="next">
                     <Link to="/toppings">
                         <motion.button
                             whileHover={{
