@@ -19,7 +19,12 @@ const Base = ({ addBase, pizza }: IBaseProps) => {
     };
 
     return (
-        <div className="base max-w-75 mt-25 mb-10 mx-auto">
+        <motion.div
+            initial={{ x: '100vw' }}
+            animate={{ x: 0 }}
+            transition={{ type: 'spring', stiffness: 100, delay: 0.5 }}
+            className="base max-w-75 mt-25 mb-10 mx-auto"
+        >
             <h3 className="pb-2.5 mb-2.5 border-b border-white/20">
                 Step 1: Choose Your Base
             </h3>
@@ -50,6 +55,7 @@ const Base = ({ addBase, pizza }: IBaseProps) => {
                 <motion.div
                     initial={{ x: '-100vw' }}
                     animate={{ x: 0 }}
+                    transition={{ type: 'spring', stiffness: 120 }}
                     className="next"
                 >
                     <Link to="/toppings">
@@ -57,7 +63,7 @@ const Base = ({ addBase, pizza }: IBaseProps) => {
                     </Link>
                 </motion.div>
             )}
-        </div>
+        </motion.div>
     );
 };
 
