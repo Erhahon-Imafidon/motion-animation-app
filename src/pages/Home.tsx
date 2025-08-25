@@ -12,7 +12,11 @@ const Home = () => {
             <h2 className="mb-7.5 text-[2em]">Welcome to Pizza Joint</h2>
             <Link to="/base">
                 <motion.button
-                    animate={{}}
+                    whileHover={{
+                        scale: 1.1,
+                        textShadow: '0px 0px 8px rgb(255,255,255)',
+                        boxShadow: '0px 0px 8px rgb(255,255,255)',
+                    }}
                     className="!py-4 !text-[1.6em] !border-3 my-7.5 mx-5"
                 >
                     Create Your Pizza

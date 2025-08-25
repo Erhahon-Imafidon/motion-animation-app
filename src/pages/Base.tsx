@@ -32,7 +32,13 @@ const Base = ({ addBase, pizza }: IBaseProps) => {
                 {bases.map((base) => {
                     const isActive = activeBase === base;
                     return (
-                        <li
+                        <motion.li
+                            whileHover={{
+                                scale: 1.3,
+                                color: '#f8e112',
+                                originX: 0,
+                            }}
+                            transition={{ type: 'spring', stiffness: 300 }}
                             className="p-2.5 cursor-pointer"
                             key={base}
                             onClick={() => handleActive(base)}
@@ -46,7 +52,7 @@ const Base = ({ addBase, pizza }: IBaseProps) => {
                             >
                                 {base}
                             </span>
-                        </li>
+                        </motion.li>
                     );
                 })}
             </ul>
@@ -59,7 +65,15 @@ const Base = ({ addBase, pizza }: IBaseProps) => {
                     className="next"
                 >
                     <Link to="/toppings">
-                        <button>Next</button>
+                        <motion.button
+                            whileHover={{
+                                scale: 1.1,
+                                textShadow: '0px 0px 8px rgb(255,255,255)',
+                                boxShadow: '0px 0px 8px rgb(255,255,255)',
+                            }}
+                        >
+                            Next
+                        </motion.button>
                     </Link>
                 </motion.div>
             )}
