@@ -1,4 +1,5 @@
-import { motion, Variants } from 'motion/react';
+import { motion, Variants, AnimatePresence } from 'motion/react';
+import { useState } from 'react';
 
 type OrderProps = {
     pizza: {
@@ -33,6 +34,12 @@ const childVariants: Variants = {
 };
 
 const Order = ({ pizza }: OrderProps) => {
+    const [showTitle, setShowTitle] = useState(true);
+
+    setTimeout(() => {
+        setShowTitle(false);
+    }, 4000);
+
     return (
         <motion.div
             variants={containerVariants}
@@ -40,7 +47,13 @@ const Order = ({ pizza }: OrderProps) => {
             animate="visible"
             className="text-center max-w-200 mx-auto"
         >
-            <h2>Thank you for your order :)</h2>
+            <AnimatePresence>
+                {showTitle && (
+                    <motion.h2 exit={{ y: -1000 }} className="text-2xl">
+                        Thank you for your order :)
+                    </motion.h2>
+                )}
+            </AnimatePresence>
             <motion.p variants={childVariants} className="my-5 mx-auto">
                 You ordered a {pizza.base} pizza with:
             </motion.p>
