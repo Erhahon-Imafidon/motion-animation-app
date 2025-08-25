@@ -4,9 +4,14 @@ import { motion } from 'motion/react';
 const Home = () => {
     const buttonVariants = {
         hover: {
-            scale: [1, 1.1, 1, 1.1, 1, 1.1, 1],
+            scale: 1.1,
             textShadow: '0px 0px 8px rgb(255,255,255)',
             boxShadow: '0px 0px 8px rgb(255,255,255)',
+            transition: {
+                repeat: Infinity,
+                repeatType: 'reverse',
+                duration: 0.3,
+            },
         },
     };
 
