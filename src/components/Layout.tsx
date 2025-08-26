@@ -1,12 +1,17 @@
-import { Outlet } from 'react-router';
+import { Outlet, useLocation } from 'react-router';
+import { AnimatePresence } from 'motion/react';
 import Header from './Header.tsx';
 
 const Layout = () => {
+    const location = useLocation();
+
     return (
         <>
             <Header />
             <main className="text-white">
-                <Outlet />
+                <AnimatePresence mode="wait">
+                    <Outlet key={location.pathname} />
+                </AnimatePresence>
             </main>
         </>
     );
