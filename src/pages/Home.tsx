@@ -1,5 +1,5 @@
 import { Link } from 'react-router';
-import { motion } from 'motion/react';
+import { motion, Variants } from 'motion/react';
 
 const Home = () => {
     const buttonVariants = {
@@ -15,11 +15,26 @@ const Home = () => {
         },
     };
 
+    const containerVariants: Variants = {
+        hidden: {
+            opacity: 0,
+        },
+        visible: {
+            opacity: 1,
+            transition: { delay: 1.5, duration: 1.5 },
+        },
+        exit: {
+            x: '-100vw',
+            transition: { ease: 'easeInOut' },
+        },
+    };
+
     return (
         <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 3 }}
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
             className="home max-w-200 mt-25 mb-10 mx-auto text-center"
         >
             <h2 className="mb-7.5 text-[2em]">Welcome to Pizza Joint</h2>
