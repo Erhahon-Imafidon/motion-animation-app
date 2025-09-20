@@ -2,7 +2,7 @@ import { Link } from 'react-router';
 import { motion, Variants } from 'motion/react';
 
 const Home = () => {
-    const buttonVariants = {
+    const buttonVariants: Variants = {
         hover: {
             scale: 1.1,
             textShadow: '0px 0px 8px rgb(255,255,255)',
