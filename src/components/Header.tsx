@@ -37,7 +37,7 @@ const Header = () => {
                 initial={{ y: -250 }}
                 animate={{ y: -10 }}
                 transition={{ delay: 0.2, type: 'spring', stiffness: 120 }}
-                className="mt-5 text-[1em] w-full absolute left-24"
+                className="mt-5 text-[1em] w-full absolute left-30"
             >
                 <h1 className="border-b border-white/20 pb-2.5">Pizza Joint</h1>
             </motion.div>
