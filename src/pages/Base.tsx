@@ -28,6 +28,10 @@ const Base = ({ addBase, pizza }: IBaseProps) => {
             opacity: 1,
             transition: { type: 'spring', delay: 0.5 },
         },
+        exit: {
+            x: '-100vw',
+            transition: { ease: 'easeInOut' },
+        },
     };
 
     const nextVariants: Variants = {
@@ -43,6 +47,7 @@ const Base = ({ addBase, pizza }: IBaseProps) => {
             variants={containerVariants}
             initial="hidden"
             animate="visible"
+            exit="exit"
             className="base max-w-75 mt-25 mb-10 mx-auto"
         >
             <h3 className="pb-2.5 mb-2.5 border-b border-white/20">

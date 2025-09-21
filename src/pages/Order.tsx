@@ -17,6 +17,10 @@ const containerVariants: Variants = {
         opacity: 1,
         transition: { type: 'spring', delay: 0.5 },
     },
+    exit: {
+        x: '-100vw',
+        transition: { ease: 'easeInOut' },
+    },
 };
 
 const Order = ({ pizza }: OrderProps) => {
@@ -25,6 +29,7 @@ const Order = ({ pizza }: OrderProps) => {
             variants={containerVariants}
             initial="hidden"
             animate="visible"
+            exit="exit"
             className="text-center max-w-200 mx-auto"
         >
             <h2>Thank you for your order :)</h2>

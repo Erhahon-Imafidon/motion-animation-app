@@ -1,11 +1,11 @@
 import { Routes, Route, useLocation } from 'react-router';
 import { useState } from 'react';
+import { AnimatePresence } from 'motion/react';
 import Base from './pages/Base.tsx';
 import Home from './pages/Home.tsx';
 import Toppings from './pages/Toppings.tsx';
 import Layout from './components/Layout.tsx';
 import Order from './pages/Order.tsx';
-import { AnimatePresence } from 'motion/react';
 
 type Pizza = {
     base: string;
@@ -31,7 +31,7 @@ const App = () => {
     };
 
     return (
-        <AnimatePresence>
+        <AnimatePresence mode="wait">
             <Routes location={location} key={location.pathname}>
                 <Route path="/" element={<Layout />}>
                     <Route index element={<Home />} />

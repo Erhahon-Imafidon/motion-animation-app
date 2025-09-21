@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 const Header = () => {
     return (
-        <header className="flex items-center text-white p-10 ">
+        <header className="flex items-center text-white p-10 h-32 relative">
             <div className="cursor-pointer">
                 <Link to="/">
                     <svg
@@ -37,7 +37,7 @@ const Header = () => {
                 initial={{ y: -250 }}
                 animate={{ y: -10 }}
                 transition={{ delay: 0.2, type: 'spring', stiffness: 120 }}
-                className=" mt-5 text-[1em] w-full"
+                className="mt-5 text-[1em] w-full absolute left-24"
             >
                 <h1 className="border-b border-white/20 pb-2.5">Pizza Joint</h1>
             </motion.div>
