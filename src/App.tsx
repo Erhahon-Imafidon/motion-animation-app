@@ -7,6 +7,7 @@ import Toppings from './pages/Toppings.tsx';
 import Layout from './components/Layout.tsx';
 import Order from './pages/Order.tsx';
 import Header from './components/Header.tsx';
+import Modal from './components/Modal.tsx';
 
 type Pizza = {
     base: string;
@@ -15,6 +16,7 @@ type Pizza = {
 
 const App = () => {
     const [pizza, setPizza] = useState<Pizza>({ base: '', toppings: [] });
+    const [showModal, setShowModal] = useState(false);
     const location = useLocation();
 
     const addBase = (base: string) => {
@@ -31,8 +33,13 @@ const App = () => {
         setPizza({ ...pizza, toppings: newToppings });
     };
 
+    // const toggleModal = () => {
+    //     setShowModal(!showModal);
+    // };
+
     return (
         <div className="min-h-screen">
+            <Modal showModal={showModal} setShowModal={setShowModal} />
             <Header />
             <main className="text-white relative overflow-hidden">
                 <AnimatePresence mode="wait">
@@ -56,7 +63,12 @@ const App = () => {
                             />
                             <Route
                                 path="order"
-                                element={<Order pizza={pizza} />}
+                                element={
+                                    <Order
+                                        pizza={pizza}
+                                        setShowModal={setShowModal}
+                                    />
+                                }
                             />
                         </Route>
                     </Routes>
