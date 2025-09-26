@@ -31,7 +31,7 @@ const Order = ({ pizza, setShowModal }: OrderProps) => {
             if (setShowModal) {
                 setShowModal(true);
             }
-        }, 5000);
+        }, 3000);
     }, [setShowModal]);
 
     return (

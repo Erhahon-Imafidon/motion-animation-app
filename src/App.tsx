@@ -33,16 +33,15 @@ const App = () => {
         setPizza({ ...pizza, toppings: newToppings });
     };
 
-    // const toggleModal = () => {
-    //     setShowModal(!showModal);
-    // };
-
     return (
         <div className="min-h-screen">
             <Modal showModal={showModal} setShowModal={setShowModal} />
             <Header />
             <main className="text-white relative overflow-hidden">
-                <AnimatePresence mode="wait">
+                <AnimatePresence
+                    mode="wait"
+                    onExitComplete={() => setShowModal(false)}
+                >
                     <Routes location={location} key={location.pathname}>
                         <Route path="/" element={<Layout />}>
                             <Route index element={<Home />} />

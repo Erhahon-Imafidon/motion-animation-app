@@ -1,5 +1,6 @@
 import { Link } from 'react-router';
 import { AnimatePresence, motion } from 'motion/react';
+import type { Variants } from 'motion/react';
 
 interface ModalProps {
     showModal: boolean;
@@ -12,23 +13,42 @@ const backdropVariants = {
     hidden: { opacity: 0 },
 };
 
+const modal: Variants = {
+    hidden: {
+        y: '-100vh',
+        opacity: 0,
+    },
+
+    visible: {
+        y: '400px',
+        opacity: 1,
+        transition: { delay: 0.5, type: 'spring', stiffness: 120 },
+    },
+};
+
 const Modal = ({ showModal, children, setShowModal }: ModalProps) => {
     return (
         <AnimatePresence mode="wait">
             {showModal && (
                 <motion.div
-                    className="fixed inset-0 size-full bg-black/50 flex items-center justify-center z-1"
+                    className="fixed inset-0 size-full bg-black/50  z-1"
                     variants={backdropVariants}
                     initial="hidden"
                     animate="visible"
-                    // onClick={() => setShowModal(false)}
+                    exit="hidden"
                 >
-                    <motion.div className="max-w-100 bg-white py-10 px-5 rounded-lg text-center">
+                    <motion.div
+                        className="max-w-100 mx-auto bg-white py-10 px-5 rounded-lg text-center"
+                        variants={modal}
+                    >
                         <p className="text-primary font-bold">
                             Want to make another pizza?
                         </p>
                         <Link to="/">
-                            <button className="!text-primary font-bold mt-5 !border-primary">
+                            <button
+                                className="!text-primary font-bold mt-5 !border-primary"
+                                onClick={() => setShowModal(false)}
+                            >
                                 Start Again
                             </button>
                         </Link>
