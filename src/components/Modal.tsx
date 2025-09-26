@@ -1,4 +1,4 @@
-// import { Link } from 'react-router';
+import { Link } from 'react-router';
 import { AnimatePresence, motion } from 'motion/react';
 
 interface ModalProps {
@@ -14,15 +14,25 @@ const backdropVariants = {
 
 const Modal = ({ showModal, children, setShowModal }: ModalProps) => {
     return (
-        <AnimatePresence>
+        <AnimatePresence mode="wait">
             {showModal && (
                 <motion.div
                     className="fixed inset-0 size-full bg-black/50 flex items-center justify-center z-1"
                     variants={backdropVariants}
                     initial="hidden"
                     animate="visible"
-                    onClick={() => setShowModal(false)}
+                    // onClick={() => setShowModal(false)}
                 >
+                    <motion.div className="max-w-100 bg-white py-10 px-5 rounded-lg text-center">
+                        <p className="text-primary font-bold">
+                            Want to make another pizza?
+                        </p>
+                        <Link to="/">
+                            <button className="!text-primary font-bold mt-5 !border-primary">
+                                Start Again
+                            </button>
+                        </Link>
+                    </motion.div>
                     {children}
                 </motion.div>
             )}
