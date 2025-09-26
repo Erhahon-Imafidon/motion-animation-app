@@ -22,4 +22,5 @@ button {
 
 @theme {
     --font-quicksand: 'Quicksand', sans-serif;
+    --color-primary: #444;
 }

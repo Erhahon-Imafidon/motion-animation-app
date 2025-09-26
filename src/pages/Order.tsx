@@ -1,10 +1,12 @@
 import { motion, Variants } from 'motion/react';
+import { useEffect } from 'react';
 
 type OrderProps = {
     pizza: {
         base: string;
         toppings: string[];
     };
+    setShowModal?: (show: boolean) => void;
 };
 
 const containerVariants: Variants = {
@@ -23,7 +25,15 @@ const containerVariants: Variants = {
     },
 };
 
-const Order = ({ pizza }: OrderProps) => {
+const Order = ({ pizza, setShowModal }: OrderProps) => {
+    useEffect(() => {
+        setTimeout(() => {
+            if (setShowModal) {
+                setShowModal(true);
+            }
+        }, 3000);
+    }, [setShowModal]);
+
     return (
         <motion.div
             variants={containerVariants}
