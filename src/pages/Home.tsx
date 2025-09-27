@@ -1,5 +1,6 @@
 import { Link } from 'react-router';
 import { motion, Variants } from 'motion/react';
+import Loader from '../components/Loader';
 
 const Home = () => {
     const buttonVariants: Variants = {
@@ -47,6 +48,8 @@ const Home = () => {
                     Create Your Pizza
                 </motion.button>
             </Link>
+
+            <Loader />
         </motion.div>
     );
 };
