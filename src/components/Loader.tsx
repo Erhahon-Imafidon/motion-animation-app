@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+import { motion, useCycle } from 'motion/react';
 import type { Variants } from 'motion/react';
 
 const loaderVariants: Variants = {
@@ -19,15 +19,39 @@ const loaderVariants: Variants = {
             },
         },
     },
+
+    animationTwo: {
+        y: [0, -40],
+        x: 0,
+        transition: {
+            y: {
+                repeat: Infinity,
+                duration: 0.25,
+                repeatType: 'reverse',
+                ease: 'easeOut',
+            },
+        },
+    },
 };
 
 const Loader = () => {
+    const [animation, cycleAnimation] = useCycle(
+        'animationOne',
+        'animationTwo'
+    );
+
     return (
-        <motion.div
-            variants={loaderVariants}
-            animate="animationOne"
-            className="size-2.5 my-10 mx-auto rounded-full bg-white"
-        />
+        <>
+            <motion.div
+                variants={loaderVariants}
+                animate={animation}
+                className="size-2.5 my-10 mx-auto rounded-full bg-white"
+            />
+
+            <button onClick={() => cycleAnimation()}>
+                Cycle Loader Animation
+            </button>
+        </>
     );
 };
 
